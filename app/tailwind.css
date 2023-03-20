@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	@apply flex flex-1 justify-center h-screen bg-gradient-to-b from-fuchsia-400 to-purple-900;
+}
