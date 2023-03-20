@@ -28,7 +28,7 @@ export default function Index() {
 				<img
 					src={`${dragon}`}
 					alt=""
-					className="opacity-50 animate-spin-slow max-w-md"
+					className="opacity-50 max-w-md"
 				/>
 			</div>
 		</section>
