@@ -10,14 +10,14 @@ export default function Index() {
 					Welcome Wildlings!
 				</h1>
 				<p
-					className="text-white text-xl px-4
+					className="text-white text-xl px-4 text-center
                 ">
 					This is the stars and wishes page. Here you can submit your stars and
-					whishes to post session to your dungeon master. Just click the button
-					and send away!
+					whishes post session to your dungeon master. Just click the button and
+					send away!
 				</p>
 				<Link
-					to="/"
+					to="/starsandwishes"
 					className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
 					<GiMagicLamp size={40} />
 					<span className="mx-2">Submit answers!</span>

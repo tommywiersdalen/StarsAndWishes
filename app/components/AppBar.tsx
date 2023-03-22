@@ -1,17 +1,29 @@
-import { FaUserTimes } from "react-icons/fa";
+import { useLoaderData, Form } from "@remix-run/react";
+
 export default function AppBar() {
+	const userId = useLoaderData();
 	return (
 		<section>
-			<div className="container max-w-full mx-auto px-6 py-12 ">
+			<div className="container max-w-full mx-auto px-6 py-12 bg-black/20">
 				<nav className="flex items-center justify-between font-bold text-white">
 					<div className=" flex items-center justify-center">
-						<h1 className="text-4xl text-white">Stars and Wishes</h1>
+						<a
+							href="/"
+							className="text-4xl text-white">
+							Stars and Wishes
+						</a>
 					</div>
 					<div className="h-10 flex justify-center items-center">
-						<button className="flex items-center justify-between space-x-4 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
-							<span className="text-2xl">Log in</span>
-							<FaUserTimes size={40} />
-						</button>
+						{userId && (
+							<Form
+								action="/logout"
+								method="post"
+								id="logout-form">
+								<button className="flex flex-col md:flex-row items-center justify-between space-x-4 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
+									<span className="text-2xl mb-1 md:mb-0">Log out</span>
+								</button>
+							</Form>
+						)}
 					</div>
 				</nav>
 			</div>
