@@ -16,6 +16,10 @@ function AuthForm() {
 	const submitBtnCaption = authMode === "login" ? "Login" : "Create user";
 	const toggleBtnCaption = authMode === "login" ? "Create user" : "Login";
 	const isSubmitting = navigation.state === "submitting";
+	const isRedirecting =
+		navigation.state === "loading" &&
+		navigation.formData != null &&
+		navigation.formAction !== navigation.location.pathname;
 
 	return (
 		<>
@@ -26,7 +30,7 @@ function AuthForm() {
 					</div>
 				</div>
 			)}
-			{!isSubmitting && (
+			{!isSubmitting && !isRedirecting && (
 				<Form
 					method="post"
 					id="auth-form"

@@ -10,6 +10,10 @@ export default function AddStarsAndWishesPage() {
 	const navigate = useNavigate();
 	const navigation = useNavigation();
 	const isSubmitting = navigation.state === "submitting";
+	const isRedirecting =
+		navigation.state === "loading" &&
+		navigation.formData != null &&
+		navigation.formAction !== navigation.location.pathname;
 	function closeHandler() {
 		navigate("..");
 	}
@@ -22,7 +26,7 @@ export default function AddStarsAndWishesPage() {
 					</div>
 				</div>
 			)}
-			{!isSubmitting && (
+			{!isSubmitting && !isRedirecting && (
 				<Modal onClose={closeHandler}>
 					<StarsAndWishesForm />
 				</Modal>
