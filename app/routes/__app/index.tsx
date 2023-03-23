@@ -17,7 +17,7 @@ export default function Index() {
 					send away!
 				</p>
 				<Link
-					to="/starsandwishes"
+					to="/starsandwishes?page=1"
 					className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
 					<GiMagicLamp size={40} />
 					<span className="mx-2">Submit answers!</span>

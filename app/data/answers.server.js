@@ -15,3 +15,25 @@ export async function addAnswer(answerData, userId) {
         throw new Error('Failed to submit answer')
     }
 }
+
+export async function getAnswers() {
+    try {
+        const answers = await prisma.answer.findMany({
+            orderBy: { dateAdded: 'desc' },
+        });
+        return answers
+    } catch (error) {
+        throw new Error('Failed to get answers.')
+    }
+}
+export async function getAnswersByUserId(userId) {
+    try {
+        const answers = await prisma.answer.findMany({
+            where: { userId },
+            orderBy: { dateAdded: 'desc' }
+        })
+        return answers
+    } catch (error) {
+        throw new Error('Failed to get answers.')
+    }
+}
