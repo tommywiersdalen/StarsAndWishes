@@ -10,7 +10,7 @@ export default function StarsAndWishesList({ answers, currentPage }) {
 						key={answer.id}
 						className="p-4 ">
 						<Link
-							to={answer.id + `?page=${currentPage}`}
+							to={answer.id}
 							state={currentPage}>
 							<div className="bg-teal-400 px-4 py-6">
 								{formatDate(answer.dateAdded)}
