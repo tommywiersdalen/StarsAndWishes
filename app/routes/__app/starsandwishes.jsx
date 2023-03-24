@@ -19,6 +19,7 @@ export async function loader({ request }) {
 			dateAdded: "desc",
 		},
 	};
+	console.log(currentPage);
 	options.where = {
 		userId,
 	};
@@ -34,13 +35,12 @@ export async function loader({ request }) {
 
 export default function StarsAndWishesLayout() {
 	const { data: answers, count, currentPage } = useLoaderData();
-
+	console.log(answers);
 	const totalPages = Math.ceil(count / PER_PAGE);
 
 	const hasAnswers = answers && answers.length > 0;
 	return (
 		<>
-			<Outlet />
 			<section id="answerAdd">
 				<div className="flex flex-col items-center justify-center mx-auto mt-12 max-w-xl">
 					<Link
@@ -86,6 +86,7 @@ export default function StarsAndWishesLayout() {
 					</div>
 				</section>
 			)}
+			<Outlet />
 		</>
 	);
 }

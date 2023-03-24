@@ -1,6 +1,7 @@
 export default function StarsAndWishesListItem({ answer }) {
+	console.log(answer);
 	return (
-		<div className="flex flex-col mx-auto justify-center items-center text-center">
+		<div className="flex flex-col mx-auto justify-center items-center text-center z-50">
 			<div className="mx-2 p-4 flex flex-col">
 				<h2 className="text-white text-lg">Player Questions</h2>
 				<p className="text-white mt-3 mb-2">

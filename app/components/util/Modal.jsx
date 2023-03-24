@@ -1,7 +1,7 @@
 export default function Modal({ children, onClose }) {
 	return (
 		<div
-			className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+			className="fixed top-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-screen w-full"
 			onClick={onClose}>
 			<dialog
 				className="fixed top-[7vh]
