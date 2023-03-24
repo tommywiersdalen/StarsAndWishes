@@ -73,6 +73,15 @@ function AuthForm() {
 									minLength={8}
 								/>
 							</div>
+							{validationErrors && (
+								<div className="flex text-xl text-red-600 justify-center text-center">
+									<ul>
+										{Object.values(validationErrors).map((error) => (
+											<li key={error}>{error}</li>
+										))}
+									</ul>
+								</div>
+							)}
 							<div className=" mx-10 border border-b mt-2 border-white max-w-sm"></div>
 							<div className="flex flex-col mx-auto mt-2">
 								<button className="text-white text-xl bg-green-700 hover:bg-green-500 px-4 py-2 rounded-lg mb-3 mt-2">
@@ -149,6 +158,15 @@ function AuthForm() {
 									id="password2"
 									className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-green-600 invalid:focus:outline-red-500"></input>
 							</div>
+							{validationErrors && (
+								<div className="flex text-xl text-red-600 justify-center text-center">
+									<ul>
+										{Object.values(validationErrors).map((error) => (
+											<li key={error}>{error}</li>
+										))}
+									</ul>
+								</div>
+							)}
 							<div className=" mx-10 border border-b mt-2 border-white max-w-sm"></div>
 							<div className="flex flex-col mx-auto mt-2">
 								<button className="text-white text-xl bg-green-700 hover:bg-green-500 px-4 py-2 rounded-lg mb-3 mt-2">

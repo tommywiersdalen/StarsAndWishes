@@ -1,10 +1,9 @@
 import { Link } from "@remix-run/react";
 
 export default function StarsAndWishesList({ answers, currentPage }) {
-	console.log(currentPage);
 	return (
 		<div className="container mx-auto max-w-7xl p-2 md:p-10">
-			<ol className="grid gap-4 grid-cols-1 text-white md:grid-cols-4  lg:grid-cols-6">
+			<ol className="grid gap-4 grid-cols-1 text-white md:grid-cols-3 lg:grid-cols-3">
 				{answers.map((answer) => (
 					<li
 						key={answer.id}
@@ -12,8 +11,11 @@ export default function StarsAndWishesList({ answers, currentPage }) {
 						<Link
 							to={answer.id}
 							state={currentPage}>
-							<div className="bg-teal-400 px-4 py-6">
-								{formatDate(answer.dateAdded)}
+							<div className="bg-teal-400  text-center px-4 py-6 rounded-lg hover:scale-110 duration-200">
+								<div>
+									<p>From session:</p>
+									{formatDate(answer.dateAdded)}
+								</div>
 							</div>
 						</Link>
 					</li>

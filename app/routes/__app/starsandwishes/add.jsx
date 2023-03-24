@@ -1,5 +1,5 @@
 import { redirect } from "@remix-run/node";
-import { useNavigate, useNavigation } from "@remix-run/react";
+import { useNavigate, useNavigation, useLocation } from "@remix-run/react";
 import StarsAndWishesForm from "~/components/starsandwishes/StarsAndWishesForm";
 import LoadingSpinner from "../../../components/util/Loading";
 import Modal from "../../../components/util/Modal";
@@ -9,13 +9,14 @@ import { requireUserSession } from "../../../data/auth.sever";
 export default function AddStarsAndWishesPage() {
 	const navigate = useNavigate();
 	const navigation = useNavigation();
+	let { state } = useLocation();
 	const isSubmitting = navigation.state === "submitting";
 	const isRedirecting =
 		navigation.state === "loading" &&
 		navigation.formData != null &&
 		navigation.formAction !== navigation.location.pathname;
 	function closeHandler() {
-		navigate("..");
+		navigate(`/starsandwishes?page=${state}`);
 	}
 	return (
 		<>
@@ -38,10 +39,10 @@ export async function action({ request }) {
 	const userId = await requireUserSession(request);
 	const formData = await request.formData();
 	const answerData = Object.fromEntries(formData);
-	console.log(answerData);
+
 	try {
 		await addAnswer(answerData, userId);
-		return redirect("/starsandwishes");
+		return redirect("/starsandwishes?page=1");
 	} catch (error) {
 		return error;
 	}

@@ -31,7 +31,7 @@ export async function getUserFromSession(request) {
     const session = await sessionStorage.getSession(request.headers.get('Cookie'));
     const userId = session.get('userId');
     const userName = session.get('userName')
-    console.log(userName);
+
     if (!userId) {
         return null;
     }

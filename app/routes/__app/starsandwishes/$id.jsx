@@ -11,7 +11,6 @@ export default function ViewAnswer() {
 	const params = useParams();
 	console.log(params);
 	let { state } = useLocation();
-	console.log(state);
 	const matches = useMatches();
 	const { data: answers } = matches.find(
 		(match) => match.id === "routes/__app/starsandwishes"
