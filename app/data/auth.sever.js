@@ -15,11 +15,11 @@ const sessionStorage = createCookieSessionStorage({
     }
 });
 
-async function createUserSession(userId, userName, redirectPath) {
-    ;
+async function createUserSession(userId, userName, isDM, redirectPath) {
     const session = await sessionStorage.getSession()
     session.set('userId', userId);
-    session.set('userName', userName)
+    session.set('userName', userName);
+    session.set('isDM', isDM)
     return redirect(redirectPath, {
         headers: {
             'Set-Cookie': await sessionStorage.commitSession(session),
@@ -30,12 +30,19 @@ async function createUserSession(userId, userName, redirectPath) {
 export async function getUserFromSession(request) {
     const session = await sessionStorage.getSession(request.headers.get('Cookie'));
     const userId = session.get('userId');
-    const userName = session.get('userName')
+    const userName = session.get('userName');
+    const isDM = session.get('isDM')
 
     if (!userId) {
         return null;
     }
-    return userId;
+    return {
+
+        userId: userId,
+        userName: userName,
+        isDM: isDM
+
+    };
 }
 
 export async function destroyUserSession(request) {
@@ -49,7 +56,9 @@ export async function destroyUserSession(request) {
 }
 
 export async function requireUserSession(request) {
+
     const userId = await getUserFromSession(request);
+
     if (!userId) {
         throw redirect('/auth?mode=login');
     }
@@ -66,7 +75,7 @@ export async function signup({ userName, email, password }) {
     }
     const hashedpassword = await hash(password, 12);
     const user = await prisma.user.create({ data: { userName, email, password: hashedpassword } });
-    return createUserSession(user.id, user.userName, '/starsandwishes');
+    return createUserSession(user.id, user.userName, user.isDM, '/starsandwishes');
 }
 
 export async function login({ email, password }) {
@@ -82,6 +91,9 @@ export async function login({ email, password }) {
         error.status = 401;
         throw error;
     }
-    return createUserSession(existingUser.id, existingUser.userName, '/starsandwishes');
+    if (existingUser.isDM) {
+        return createUserSession(existingUser.id, existingUser.userName, existingUser.isDM, '/admin')
+    }
+    return createUserSession(existingUser.id, existingUser.userName, existingUser.isDM, '/starsandwishes');
 
 }

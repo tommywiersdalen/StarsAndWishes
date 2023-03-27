@@ -1,6 +1,6 @@
 import { prisma } from "./database.server";
 
-export async function addAnswer(answerData, userId) {
+export async function addAnswer(answerData, userId, userName) {
     try {
         return await prisma.answer.create({
             data: {
@@ -8,7 +8,8 @@ export async function addAnswer(answerData, userId) {
                 playerQuestion2: answerData.playerQuestion2,
                 characterQuestion1: answerData.characterQuestion1,
                 characterQuestion2: answerData.characterQuestion2,
-                User: { connect: { id: userId } }
+                User: { connect: { id: userId } },
+                userName: userName
             }
         })
     } catch (error) {

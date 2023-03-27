@@ -4,10 +4,13 @@ import Modal from "../../../components/util/Modal";
 
 export default function ViewAnswer() {
 	let { state } = useLocation();
-
 	const navigate = useNavigate();
 	function closeHandler() {
-		navigate(`/starsandwishes?page=${state.currentPage}`);
+		if (state.isDM) {
+			navigate(`/admin?page=${state.currentPage}`);
+		} else {
+			navigate(`/starsandwishes?page=${state.currentPage}`);
+		}
 	}
 	return (
 		<Modal onClose={closeHandler}>

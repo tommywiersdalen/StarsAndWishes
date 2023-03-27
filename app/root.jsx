@@ -23,6 +23,19 @@ function Document({ title, children }) {
 				{title && <title>{title}</title>}
 				<Meta />
 				<Links />
+				<link
+					rel="preconnect"
+					href="https://fonts.googleapis.com"
+				/>
+				<link
+					rel="preconnect"
+					href="https://fonts.gstatic.com"
+					crossorigin
+				/>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap"
+					rel="stylesheet"
+				/>
 			</head>
 			<body>
 				{children}
@@ -52,7 +65,7 @@ export function CatchBoundary() {
 						{caughtResponse.data?.message ||
 							"Something went wrong. Please try again later"}
 					</p>
-					<p>
+					<p className="underline hover:text-blue-400">
 						Back to <Link to="/">saftey</Link>.
 					</p>
 				</Error>
@@ -69,7 +82,7 @@ export function ErrorBoundary({ error }) {
 					<p>
 						{error.message || "Something went wrong. Please try again later"}
 					</p>
-					<p>
+					<p className="underline hover:text-blue-400">
 						Back to <Link to="/">saftey</Link>.
 					</p>
 				</Error>

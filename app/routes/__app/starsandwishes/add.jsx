@@ -36,12 +36,12 @@ export default function AddStarsAndWishesPage() {
 	);
 }
 export async function action({ request }) {
-	const userId = await requireUserSession(request);
+	const user = await requireUserSession(request);
 	const formData = await request.formData();
 	const answerData = Object.fromEntries(formData);
 
 	try {
-		await addAnswer(answerData, userId);
+		await addAnswer(answerData, user.userId, user.userName);
 		return redirect("/starsandwishes?page=1");
 	} catch (error) {
 		return error;

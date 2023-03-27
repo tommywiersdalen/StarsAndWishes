@@ -9,10 +9,11 @@ export default function AppBar() {
 					<div className=" flex items-center justify-center">
 						<a
 							href="/"
-							className="text-4xl text-white">
+							className=" text-6xl text-white font-rouge">
 							Stars and Wishes
 						</a>
 					</div>
+
 					<div className="h-10 flex justify-center items-center">
 						{userId && (
 							<Form

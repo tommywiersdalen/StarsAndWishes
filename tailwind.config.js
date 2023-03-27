@@ -13,6 +13,9 @@ module.exports = {
           '100%': { opacity: 1, transform: 'translate(0)' },
         },
       },
+      fontFamily: {
+        rouge: ['Rouge Script']
+      },
       animation: {
         'spin-slow': 'spin 60s linear infinite',
         'fadeInLeft': 'fadeInLeft  2.5s ease-in-out forwards',

@@ -1,5 +1,4 @@
-import { redirect } from "@remix-run/node";
-import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import StarsAndWishesList from "../../components/starsandwishes/StarsAndWishesList";
 import Pagination from "../../components/util/Pagination";
 import { requireUserSession } from "../../data/auth.sever";
@@ -7,9 +6,10 @@ import { prisma } from "../../data/database.server";
 const PER_PAGE = 6;
 export async function loader({ request }) {
 	const user = await requireUserSession(request);
-	const isDM = user.isDM;
-	if (isDM) {
-		throw redirect("/admin?page=1");
+	if (!user.isDM) {
+		const error = new Error("You must be a DM to view this page!");
+		error.status = 403;
+		throw error;
 	}
 	const countOptions = {};
 	const url = new URL(request.url);
@@ -25,9 +25,6 @@ export async function loader({ request }) {
 		},
 	};
 
-	options.where = {
-		userId: user.userId,
-	};
 	countOptions.where = options.where;
 
 	const [answers, count] = await Promise.all([
@@ -38,21 +35,18 @@ export async function loader({ request }) {
 	return { data: answers, count: count, currentPage: currentPage, user: user };
 }
 
-export default function StarsAndWishesLayout() {
+export default function DMPage() {
 	const { data: answers, count, currentPage, user } = useLoaderData();
 	const totalPages = Math.ceil(count / PER_PAGE);
 
 	const hasAnswers = answers && answers.length > 0;
 	return (
 		<>
-			<section id="answerAdd">
-				<div className="flex flex-col items-center justify-center mx-auto mt-12 max-w-xl">
-					<Link
-						to="add"
-						state={currentPage}
-						className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
-						<span className="mx-2">Add +</span>
-					</Link>
+			<section>
+				<div className="flex justify-center mx-auto items-center">
+					<h2 className="text-white text-4xl font-bold">
+						Welcome Dungeon master
+					</h2>
 				</div>
 			</section>
 			{hasAnswers && (
@@ -86,12 +80,11 @@ export default function StarsAndWishesLayout() {
 				<section>
 					<div className="flex  mt-2 items-center justify-center mx-auto text-center">
 						<p className="text-xl text-white">
-							You have no submitted answers! Did a goblin steal them?
+							Your players has not submitted any answers yet!
 						</p>
 					</div>
 				</section>
 			)}
-			<Outlet />
 		</>
 	);
 }

@@ -6,8 +6,8 @@ export default function Index() {
 	return (
 		<section>
 			<div className="flex flex-col items-center justify-center mx-auto mt-12 max-w-xl">
-				<h1 className="text-4xl text-white font-bold tracking-wider mb-6">
-					Welcome Wildlings!
+				<h1 className="text-6xl text-white font-bold tracking-wider mb-6 font-rouge">
+					Wildlings!
 				</h1>
 				<p
 					className="text-white text-xl px-4 text-center
@@ -16,11 +16,12 @@ export default function Index() {
 					whishes post session to your dungeon master. Just click the button and
 					send away!
 				</p>
+
 				<Link
 					to="/starsandwishes?page=1"
 					className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
 					<GiMagicLamp size={40} />
-					<span className="mx-2">Submit answers!</span>
+					<span className="mx-2">To Stars and Wishes</span>
 					<GiCursedStar size={40} />
 				</Link>
 			</div>
