@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply min-h-screen bg-fuchsia-800;
+	@apply min-h-screen bg-violet-700;
 }
 .activeLink {
 	@apply text-blue-400 underline;

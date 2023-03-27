@@ -19,7 +19,7 @@ export default function StarsAndWishesForm() {
 						type="text"
 						required
 						placeholder="Your answer"
-						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight  focus:outline-blue-600 focus:shadow-outline"
 					/>
 					<label
 						htmlFor="playerQuestion2"
@@ -32,7 +32,7 @@ export default function StarsAndWishesForm() {
 						type="text"
 						required
 						placeholder="Your answer"
-						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-blue-600  focus:shadow-outline"
 					/>
 				</div>
 				<div className="mx-2  p-4 flex flex-col">
@@ -50,7 +50,7 @@ export default function StarsAndWishesForm() {
 						type="text"
 						required
 						placeholder="Your answer"
-						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-blue-600  focus:shadow-outline"
 					/>
 					<label
 						htmlFor="characterQuestion2"
@@ -64,12 +64,12 @@ export default function StarsAndWishesForm() {
 						type="text"
 						required
 						placeholder="Your answer"
-						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						className="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-blue-600  focus:shadow-outline"
 					/>
 				</div>
 				<button
 					type="submit"
-					className="  p-2 px-8 text-white text-xl font-bold tracking-wide bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
+					className="  p-2 px-8 text-white text-xl font-bold tracking-wide bg-amber-600 rounded-lg hover:bg-amber-400 duration-200 focus:outline-none">
 					submit
 				</button>
 			</div>

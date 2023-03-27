@@ -20,7 +20,7 @@ export default function AppBar() {
 								action="/logout"
 								method="post"
 								id="logout-form">
-								<button className="flex flex-col md:flex-row items-center justify-between space-x-4 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
+								<button className="flex flex-col md:flex-row items-center justify-between space-x-4 p-2 px-8 text-white bg-amber-600 rounded-lg hover:bg-amber-400 duration-200 focus:outline-none">
 									<span className="text-2xl mb-1 md:mb-0">Log out</span>
 								</button>
 							</Form>

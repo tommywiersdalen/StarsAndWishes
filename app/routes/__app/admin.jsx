@@ -44,8 +44,8 @@ export default function DMPage() {
 		<>
 			<section>
 				<div className="flex justify-center mx-auto items-center">
-					<h2 className="text-white text-4xl font-bold">
-						Welcome Dungeon master
+					<h2 className="text-white text-6xl font-bold font-rouge mt-4">
+						Welcome Game Master
 					</h2>
 				</div>
 			</section>

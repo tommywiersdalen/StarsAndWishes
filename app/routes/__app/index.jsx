@@ -12,14 +12,14 @@ export default function Index() {
 				<p
 					className="text-white text-xl px-4 text-center
                 ">
-					This is the stars and wishes page. Here you can submit your stars and
-					whishes post session to your dungeon master. Just click the button and
-					send away!
+					Welcome to the Stars and Wishes page! Here you can submit your
+					thoughts about the latest session to your Game Master. Just click the
+					button and send away!
 				</p>
 
 				<Link
 					to="/starsandwishes?page=1"
-					className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
+					className="flex items-center mt-10 p-2 px-8 text-white bg-amber-600 rounded-lg hover:bg-amber-400 duration-200 focus:outline-none">
 					<GiMagicLamp size={40} />
 					<span className="mx-2">To Stars and Wishes</span>
 					<GiCursedStar size={40} />

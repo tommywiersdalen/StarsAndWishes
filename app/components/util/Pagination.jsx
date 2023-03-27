@@ -35,14 +35,14 @@ const Pagination = ({
 			{...attrs}>
 			{currentPage <= 1 && (
 				<span>
-					<div className="bg-gray-600 rounded-lg shadow-lg p-4 cursor-not-allowed">
+					<div className="bg-slate-800 rounded-lg shadow-lg p-4 cursor-not-allowed">
 						<FaArrowLeft />
 					</div>
 				</span>
 			)}
 			{currentPage > 1 && (
 				<Link to={`?${previousQuery.toString()}`}>
-					<div className="bg-cyan-800 rounded-lg shadow-lg p-4 hover:scale-110 hover:bg-cyan-600 duration-200">
+					<div className="bg-amber-600 rounded-lg hover:bg-amber-400  shadow-lg p-4 hover:scale-110 duration-200">
 						<FaArrowLeft />
 					</div>
 				</Link>
@@ -54,12 +54,12 @@ const Pagination = ({
 					key={page}
 					to={`?page=${page}`}>
 					{page == currentPage && (
-						<p className="text-blue-300 shadow-xl  bg-gray-600 p-4 border-blue-300 border-2 rounded">
+						<p className="text-blue-300 shadow-xl  bg-slate-800 p-4 border-blue-300 border-2 rounded">
 							{page}
 						</p>
 					)}
 					{page != currentPage && (
-						<p className="bg-gray-600 p-4 shadow-xl rounded hover:scale-105">
+						<p className="bg-slate-800 p-4 shadow-xl rounded hover:scale-105">
 							{page}
 						</p>
 					)}
@@ -67,20 +67,20 @@ const Pagination = ({
 			))}
 
 			<div className="md:hidden">
-				<p className="text-blue-300 shadow-xl  bg-gray-600 px-4 py-2 border-blue-300 border-2 rounded">
+				<p className="text-blue-300 shadow-xl  bg-slate-800 px-4 py-2 border-blue-300 border-2 rounded">
 					{currentPage}
 				</p>
 			</div>
 			{currentPage >= totalPages && (
 				<span>
-					<div className="bg-gray-600 rounded-lg shadow-lg p-4 cursor-not-allowed">
+					<div className="bg-slate-800 rounded-lg shadow-lg p-4 cursor-not-allowed">
 						<FaArrowRight />
 					</div>
 				</span>
 			)}
 			{currentPage < totalPages && (
 				<Link to={`?${nextQuery.toString()}`}>
-					<div className="bg-cyan-800 rounded-lg shadow-lg p-4 hover:scale-110 hover:bg-cyan-600 duration-200">
+					<div className=" bg-amber-600 rounded-lg hover:bg-amber-400  shadow-lg p-4 hover:scale-110 uration-200">
 						<FaArrowRight />
 					</div>
 				</Link>

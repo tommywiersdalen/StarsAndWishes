@@ -35,7 +35,7 @@ function AuthForm() {
 					method="post"
 					id="auth-form"
 					className=" 
-				flex flex-col mx-auto my-[4rem] max-w-md bg-gray-600 border-4 border-gray-600 rounded-xl shadow-2xl">
+				flex flex-col mx-auto my-[4rem] max-w-md bg-slate-800  rounded-xl shadow-2xl">
 					{authMode === "login" && (
 						<div className="flex flex-col animate-fade">
 							<div className="flex flex-col mx-auto border mt-4 rounded-full p-10 ">
@@ -84,11 +84,11 @@ function AuthForm() {
 							)}
 							<div className=" mx-10 border border-b mt-2 border-white max-w-sm"></div>
 							<div className="flex flex-col mx-auto mt-2">
-								<button className="text-white text-xl bg-green-700 hover:bg-green-500 px-4 py-2 rounded-lg mb-3 mt-2">
+								<button className="text-white text-xl bg-green-600 hover:bg-green-400 px-4 py-2 rounded-lg mb-3 mt-2">
 									{submitBtnCaption}
 								</button>
 								<Link
-									className="text-white text-xl bg-cyan-800 hover:bg-cyan-500 px-4 py-2 rounded-lg mb-4"
+									className="text-white text-xl bg-amber-600  hover:bg-amber-400 px-4 py-2 rounded-lg mb-4"
 									to={authMode === "login" ? "?mode=signup" : "?mode=login"}>
 									{toggleBtnCaption}
 								</Link>

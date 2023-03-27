@@ -4,7 +4,7 @@ import StarsAndWishesList from "../../components/starsandwishes/StarsAndWishesLi
 import Pagination from "../../components/util/Pagination";
 import { requireUserSession } from "../../data/auth.sever";
 import { prisma } from "../../data/database.server";
-const PER_PAGE = 6;
+const PER_PAGE = 1;
 export async function loader({ request }) {
 	const user = await requireUserSession(request);
 	const isDM = user.isDM;
@@ -50,7 +50,7 @@ export default function StarsAndWishesLayout() {
 					<Link
 						to="add"
 						state={currentPage}
-						className="flex items-center mt-10 p-2 px-8 text-white bg-cyan-800 rounded-lg hover:bg-cyan-500 duration-200 focus:outline-none">
+						className="flex items-center mt-10 p-2 px-8 text-white bg-amber-600 rounded-lg hover:bg-amber-400  duration-200 focus:outline-none">
 						<span className="mx-2">Add +</span>
 					</Link>
 				</div>
