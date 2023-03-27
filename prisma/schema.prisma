@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,21 +9,23 @@ datasource db {
 
 model Answer {
   id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  playerQuestion1    String
-  playerQuestion2    String
   characterQuestion1 String
   characterQuestion2 String
-  dateAdded          DateTime @default(now())
-  User               User     @relation(fields: [userId], references: [id])
+  dateAdded          DateTime @db.Date
+  playerQuestion1    String
+  playerQuestion2    String
+  user               User     @relation(fields: [userId, userName], references: [id, userName])
   userId             String   @db.ObjectId
-  userName           String
+  userName           String   @db.ObjectId
 }
 
 model User {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  userName String   @unique
   email    String   @unique
+  isDM     Boolean
   password String
-  isDM     Boolean  @default(false)
+  userName String   @unique @db.ObjectId
   Answer   Answer[]
+
+  @@unique([id, userName])
 }
