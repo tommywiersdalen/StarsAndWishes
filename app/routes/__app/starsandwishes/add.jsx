@@ -39,11 +39,12 @@ export async function action({ request }) {
 	const user = await requireUserSession(request);
 	const formData = await request.formData();
 	const answerData = Object.fromEntries(formData);
+	console.log(user);
 
 	try {
 		await addAnswer(answerData, user.userId, user.userName);
 		return redirect("/starsandwishes?page=1");
 	} catch (error) {
-		return error;
+		throw error;
 	}
 }

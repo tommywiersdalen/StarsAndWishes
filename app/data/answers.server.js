@@ -1,3 +1,4 @@
+
 import { prisma } from "./database.server";
 
 export async function addAnswer(answerData, userId, userName) {
@@ -8,11 +9,12 @@ export async function addAnswer(answerData, userId, userName) {
                 playerQuestion2: answerData.playerQuestion2,
                 characterQuestion1: answerData.characterQuestion1,
                 characterQuestion2: answerData.characterQuestion2,
-                User: { connect: { id: userId } },
+                user: { connect: { id: userId } },
                 userName: userName
             }
         })
     } catch (error) {
+        console.log(error.message);
         throw new Error('Failed to submit answer')
     }
 }

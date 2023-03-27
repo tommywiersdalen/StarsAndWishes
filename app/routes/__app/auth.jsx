@@ -29,6 +29,7 @@ export async function action({ request }) {
 		if (authMode === "login") {
 			return await login(credentials);
 		} else {
+			console.log(credentials);
 			return await signup(credentials);
 		}
 	} catch (error) {

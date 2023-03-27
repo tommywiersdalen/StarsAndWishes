@@ -3,29 +3,27 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Answer {
-  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  characterQuestion1 String
-  characterQuestion2 String
-  dateAdded          DateTime @db.Date
+  id                 String   @id @default(uuid())
   playerQuestion1    String
   playerQuestion2    String
-  user               User     @relation(fields: [userId, userName], references: [id, userName])
-  userId             String   @db.ObjectId
-  userName           String   @db.ObjectId
+  characterQuestion1 String
+  characterQuestion2 String
+  userName           String
+  dateAdded          DateTime @default(now())
+  user               User     @relation(fields: [userId], references: [id])
+  userId             String
 }
 
 model User {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String   @id @default(uuid())
   email    String   @unique
-  isDM     Boolean
+  isDM     Boolean  @default(false)
+  userName String   @unique
   password String
-  userName String   @unique @db.ObjectId
   Answer   Answer[]
-
-  @@unique([id, userName])
 }
