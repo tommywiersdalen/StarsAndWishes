@@ -1,4 +1,5 @@
-import { FaLock, FaUserPlus } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
+import { GiSpikedDragonHead } from "react-icons/gi";
 import {
 	Form,
 	Link,
@@ -98,10 +99,10 @@ function AuthForm() {
 					{authMode !== "login" && (
 						<div className="flex flex-col animate-fade">
 							<div className="flex flex-col mx-auto border mt-4 rounded-full p-10 ">
-								<FaUserPlus
+								<GiSpikedDragonHead
 									className=""
 									color="white"
-									size={40}
+									size={50}
 								/>
 							</div>
 							<div className="flex flex-col justify-center items-center mx-auto my-4">
@@ -173,7 +174,7 @@ function AuthForm() {
 									{submitBtnCaption}
 								</button>
 								<Link
-									className="text-white text-xl bg-cyan-800 hover:bg-cyan-500 px-4 py-2 rounded-lg mb-4"
+									className="text-white text-xl bg-amber-600  hover:bg-amber-400 px-4 py-2 rounded-lg mb-4"
 									to={authMode === "login" ? "?mode=signup" : "?mode=login"}>
 									{toggleBtnCaption}
 								</Link>
