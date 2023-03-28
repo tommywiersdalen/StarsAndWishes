@@ -1,5 +1,6 @@
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigation } from "@remix-run/react";
 import StarsAndWishesList from "../../components/starsandwishes/StarsAndWishesList";
+import LoadingSpinner from "../../components/util/Loading";
 import Pagination from "../../components/util/Pagination";
 import { requireUserSession } from "../../data/auth.sever";
 import { prisma } from "../../data/database.server";
@@ -36,54 +37,65 @@ export async function loader({ request }) {
 }
 
 export default function DMPage() {
+	const navigation = useNavigation();
+	const isloading = navigation.state === "loading";
 	const { data: answers, count, currentPage, user } = useLoaderData();
 	const totalPages = Math.ceil(count / PER_PAGE);
 
 	const hasAnswers = answers && answers.length > 0;
 	return (
 		<>
-			<section>
-				<div className="flex justify-center mx-auto items-center">
-					<h2 className="text-white text-6xl font-bold font-rouge mt-4">
-						Welcome Game Master
-					</h2>
+			{isloading && (
+				<div className="flex items-center justify-center mx-auto">
+					<LoadingSpinner />
 				</div>
-			</section>
-			{hasAnswers && (
-				<section
-					id="answerList"
-					className="flex flex-col">
-					<StarsAndWishesList
-						answers={answers}
-						currentPage={currentPage}
-						user={user}
-					/>
-					<div className="container mx-auto max-w-7xl p-2 md:px-12 px-6">
-						<div
-							aria-live="polite"
-							className="text-gray-200 text-sm tracking-wider md:ml-1">
-							<p>
-								Displaying {answers.length} of {count} total item(s).
-							</p>
-						</div>
-						{totalPages > 1 && (
-							<Pagination
-								totalPages={totalPages}
-								pageParam="page"
-								className="mt-8"
-							/>
-						)}
-					</div>
-				</section>
 			)}
-			{!hasAnswers && (
-				<section>
-					<div className="flex  mt-2 items-center justify-center mx-auto text-center">
-						<p className="text-xl text-white">
-							Your players has not submitted any answers yet!
-						</p>
-					</div>
-				</section>
+			{!isloading && (
+				<div>
+					<section>
+						<div className="flex justify-center mx-auto items-center">
+							<h2 className="text-white text-6xl font-bold font-rouge mt-4">
+								Welcome Game Master
+							</h2>
+						</div>
+					</section>
+					{hasAnswers && (
+						<section
+							id="answerList"
+							className="flex flex-col">
+							<StarsAndWishesList
+								answers={answers}
+								currentPage={currentPage}
+								user={user}
+							/>
+							<div className="container mx-auto max-w-7xl p-2 md:px-12 px-6">
+								<div
+									aria-live="polite"
+									className="text-gray-200 text-sm tracking-wider md:ml-1">
+									<p>
+										Displaying {answers.length} of {count} total item(s).
+									</p>
+								</div>
+								{totalPages > 1 && (
+									<Pagination
+										totalPages={totalPages}
+										pageParam="page"
+										className="mt-8"
+									/>
+								)}
+							</div>
+						</section>
+					)}
+					{!hasAnswers && (
+						<section>
+							<div className="flex  mt-2 items-center justify-center mx-auto text-center">
+								<p className="text-xl text-white">
+									Your players has not submitted any answers yet!
+								</p>
+							</div>
+						</section>
+					)}
+				</div>
 			)}
 		</>
 	);
