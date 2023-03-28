@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import StarsAndWishesList from "../../components/starsandwishes/StarsAndWishesList";
-import LoadingSpinner from "../../components/util/Loading";
+import LoadingSpinnerAlt from "../../components/util/LoadingAlt";
 import Pagination from "../../components/util/Pagination";
 import { requireUserSession } from "../../data/auth.sever";
 import { prisma } from "../../data/database.server";
@@ -45,11 +45,7 @@ export default function DMPage() {
 	const hasAnswers = answers && answers.length > 0;
 	return (
 		<>
-			{isloading && (
-				<div className="flex items-center justify-center mx-auto">
-					<LoadingSpinner />
-				</div>
-			)}
+			{isloading && <LoadingSpinnerAlt />}
 			{!isloading && (
 				<div>
 					<section>

@@ -39,7 +39,6 @@ export async function action({ request }) {
 	const user = await requireUserSession(request);
 	const formData = await request.formData();
 	const answerData = Object.fromEntries(formData);
-	console.log(user);
 
 	try {
 		await addAnswer(answerData, user.userId, user.userName);

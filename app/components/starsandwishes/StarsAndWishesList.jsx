@@ -1,7 +1,6 @@
 import { Link } from "@remix-run/react";
 
 export default function StarsAndWishesList({ answers, currentPage, user }) {
-	console.log(answers);
 	return (
 		<div className="container mx-auto max-w-7xl p-2 md:p-10">
 			<ol className="grid gap-4 grid-cols-1 text-white md:grid-cols-3 lg:grid-cols-3">

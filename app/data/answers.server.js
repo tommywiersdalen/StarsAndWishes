@@ -14,7 +14,6 @@ export async function addAnswer(answerData, userId, userName) {
             }
         })
     } catch (error) {
-        console.log(error.message);
         throw new Error('Failed to submit answer')
     }
 }
