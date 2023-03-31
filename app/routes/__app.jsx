@@ -8,6 +8,7 @@ export default function AppLayout() {
 			<AppBar />
 
 			<Outlet />
+
 			<footer className="fixed bottom-0 ml-4">
 				<div className="flex justify-center items-center text-white font-mono">
 					<p>

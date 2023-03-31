@@ -16,7 +16,11 @@ export default function AddStarsAndWishesPage() {
 		navigation.formData != null &&
 		navigation.formAction !== navigation.location.pathname;
 	function closeHandler() {
-		navigate(`/starsandwishes?page=${state}`);
+		if (state) {
+			navigate(`/starsandwishes?page=${state}`);
+		} else {
+			navigate("/starsandwishes?page=1");
+		}
 	}
 	return (
 		<>
